@@ -1,0 +1,11 @@
+ARG SCANNER_IMAGE
+FROM $SCANNER_IMAGE
+
+ARG SCANNER_TOKEN
+ARG SCANNER_ARG
+
+USER root
+ADD https://get.aquasec.com/microscanner .
+RUN chmod +x microscanner && \
+    ./microscanner ${SCANNER_ARG} ${SCANNER_TOKEN}
+
